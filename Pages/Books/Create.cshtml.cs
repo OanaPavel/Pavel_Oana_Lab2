@@ -34,15 +34,17 @@ namespace Pavel_Oana_Lab2.Pages.Books
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Book.Add(Book);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+        if (!ModelState.IsValid)
+        {
+            ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID", "PublisherName");
+            ViewData["AuthorID"] = new SelectList(_context.Set<Author>(), "ID", "FullName");
+            return Page();
         }
+
+        _context.Book.Add(Book);
+        await _context.SaveChangesAsync();
+
+        return RedirectToPage("./Index");
+    }
     }
 }
