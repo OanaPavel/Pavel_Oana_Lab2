@@ -127,6 +127,9 @@ namespace Pavel_Oana_Lab2.Areas.Identity.Pages.Account
                     var member = new Member { Email = Input.Email };
                     _context.Member.Add(member);
                     await _context.SaveChangesAsync();
+
+                    var role = await _userManager.AddToRoleAsync(user, "User");
+                    
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
