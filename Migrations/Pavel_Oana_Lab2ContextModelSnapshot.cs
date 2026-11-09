@@ -56,6 +56,7 @@ namespace Pavel_Oana_Lab2.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasMaxLength(150)
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
@@ -134,6 +135,7 @@ namespace Pavel_Oana_Lab2.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Adress")
+                        .HasMaxLength(70)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -141,9 +143,11 @@ namespace Pavel_Oana_Lab2.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FirstName")
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
